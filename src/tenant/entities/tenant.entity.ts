@@ -7,7 +7,4 @@ export class TenantEntity {
 
   @Column()
   db_name: string;
-
-  @Column({ nullable: true })
-  test: string;
 }

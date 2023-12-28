@@ -10,14 +10,10 @@ import {
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { TenantService } from 'src/tenant/tenant.service';
 
 @Controller('users')
 export class UsersController {
-  constructor(
-    private readonly usersService: UsersService,
-    private readonly tenantService: TenantService,
-  ) {}
+  constructor(private readonly usersService: UsersService) {}
 
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
@@ -27,11 +23,6 @@ export class UsersController {
   @Get()
   async findAll() {
     return this.usersService.findAll();
-  }
-
-  @Get('tenants')
-  async tenants() {
-    return this.tenantService.findAll();
   }
 
   @Get(':id')
